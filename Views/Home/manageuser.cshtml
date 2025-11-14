@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "Manage Users";
+    Layout = "_Layout";
+}
+
+<!-- Content Header -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Manage Users</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Manage Users</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+@model IEnumerable<AutocountCRM_ProjectOne.Models.Users>
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+    <div class="card-header">
+        <h3 class="card-title">User Management</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 1%">#</th>
+                    <th style="width: 20%">User Name</th>
+                    <th style="width: 30%">Email</th>
+                    <th>Assigned Branch</th>
+                    <th style="width: 8%" class="text-center">Status</th>
+                    <th style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)    
+                {
+                    <tr>
+                        <td>@user.UserID</td>
+                        <td>
+                            <a>@user.userName</a><br>
+                            <small>Joined @user.JoinedDate.ToString("dd.MM.yyyy")</small>
+                        </td>
+                        <td>@user.userEmail</td>
+                        <td>@user.AssignedBranch</td>
+                        <td class="text-center">
+                            <span class="badge @(user.status == 1 ? "badge-success" : "badge-danger")">
+                                @(user.status == 1 ? "Active" : "Inactive")
+                            </span>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-info btn-sm" href="#"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <a class="btn btn-warning btn-sm" href="#"><i class="fas fa-key"></i> @(user.status == 1 ? "Deactivate" : "Activate")</a>
+                            <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split("/").pop();
+            const sidebarLinks = document.querySelectorAll('.nav-sidebar a.nav-link');
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                const linkPath = link.getAttribute('href')?.split("/").pop();
+                if (linkPath === currentPath) {
+                    link.classList.add('active');
+                    let parent = link.closest('.nav-treeview');
+                    while (parent) {
+                        const parentLink = parent.previousElementSibling;
+                        if (parentLink?.classList.contains('nav-link')) parentLink.classList.add('active');
+                        parent = parent.parentElement.closest('.nav-treeview');
+                    }
+                }
+            });
+        });
+    </script>
+}

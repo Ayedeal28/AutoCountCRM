@@ -1,0 +1,449 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<!-- Wrapper -->
+
+<!-- Wrapper -->
+
+
+<!-- Navbar -->
+
+<!-- /.navbar -->
+
+<!-- Main Sidebar Container -->
+
+<!-- Main Sidebar Container -->
+
+
+<!-- Wrapper -->
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>54888<sup style="font-size: 20px">RM</sup></h3>
+                <p>Total Sales</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">Overview <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                  <h3>@ViewBag.LeadCount</h3>
+                  <p>Leads</p>
+              </div>
+
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a asp-controller="Leads" asp-action="Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>3</h3>
+                <p>Customers</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a asp-controller="Home" asp-action="Customers" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>@ViewBag.quotationCount</h3>
+                <p>Quotation</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a asp-controller="Home" asp-action="Quotation" class="small-box-footer">View Quotation <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Monthly Recap Report</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <p class="text-center">
+                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                    </p>
+
+                    <div class="chart">
+                      <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand"><div class=""></div></div>
+                        <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
+                      </div>
+                      <!-- Sales Chart Canvas -->
+                      <canvas id="salesChart" height="270" style="height: 180px; display: block; width: 512px;" width="768" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <!-- /.chart-responsive -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <p class="text-center">
+                      <strong>Goal Completion</strong>
+                    </p>
+
+                    <div class="progress-group">
+                      KPI
+                      <span class="float-right"><b>45</b>/50</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: 90%"></div>
+                      </div>
+                    </div>
+
+                    <div class="progress-group">
+                      Quotations Sent
+                      <span class="float-right"><b>30</b>/40</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-danger" style="width: 75%"></div>
+                      </div>
+                    </div>
+
+                    <div class="progress-group">
+                      Invoices Paid
+                      <span class="float-right"><b>25</b>/35</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-success" style="width: 71%"></div>
+                      </div>
+                    </div>
+
+                    <div class="progress-group">
+                      Follow-ups Completed
+                      <span class="float-right"><b>18</b>/25</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-warning" style="width: 72%"></div>
+                      </div>
+                    </div>
+                    <!-- /.progress-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- ./card-body -->
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                      <h5 class="description-header">RM35,210.43</h5>
+                      <span class="description-text">TOTAL REVENUE</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                      <h5 class="description-header">RM10,390.90</h5>
+                      <span class="description-text">TOTAL COST</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                      <h5 class="description-header">RM24,813.53</h5>
+                      <span class="description-text">TOTAL PROFIT</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 12%</span>
+                      <h5 class="description-header">118</h5>
+                      <span class="description-text">GOAL COMPLETIONS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            <div class="card">
+              <div class="card-header border-0">
+                <h3 class="card-title">Best Selling item</h3>
+              </div>
+              <div class="card-body table-responsive p-0">
+                <table class="table table-striped table-valign-middle">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Sales</th>
+                      <th>More</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><img src="~/dist/img/default-150x150.png" alt="Wireless Headphones" class="img-circle img-size-32 mr-2"> Wireless Headphones</td>
+                      <td>RM350</td>
+                      <td><small class="text-success mr-1"><i class="fas fa-arrow-up"></i>25%</small> 2,450 Sold</td>
+                      <td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><img src="~/dist/img/default-150x150.png" alt="Smartwatch" class="img-circle img-size-32 mr-2"> Smartwatch</td>
+                      <td>RM720</td>
+                      <td><small class="text-warning mr-1"><i class="fas fa-arrow-down"></i>5%</small> 1,200 Sold</td>
+                      <td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><img src="~/dist/img/default-150x150.png" alt="Gaming Mouse" class="img-circle img-size-32 mr-2"> Gaming Mouse</td>
+                      <td>RM150</td>
+                      <td><small class="text-success mr-1"><i class="fas fa-arrow-up"></i>18%</small> 3,750 Sold</td>
+                      <td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><img src="~/dist/img/default-150x150.png" alt="Portable Speaker" class="img-circle img-size-32 mr-2"> Portable Speaker <span class="badge bg-danger">NEW</span></td>
+                      <td>RM420</td>
+                      <td><small class="text-success mr-1"><i class="fas fa-arrow-up"></i>32%</small> 950 Sold</td>
+                      <td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- /.Left col -->
+
+          <!-- right col -->
+          <section class="col-lg-5 connectedSortable">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Recently Added Customers</h3>
+              </div>
+              <div class="card-body p-0">
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                  <li class="item">
+                    <div class="product-img"><img src="~/dist/img/default-150x150.png" alt="Customer Image" class="img-size-50"></div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">John Doe <span class="badge badge-info float-right">New</span></a>
+                      <span class="product-description">johndoe@example.com | Joined: 2025-11-01</span>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="product-img"><img src="~/dist/img/default-150x150.png" alt="Customer Image" class="img-size-50"></div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Jane Smith <span class="badge badge-success float-right">VIP</span></a>
+                      <span class="product-description">janesmith@example.com | Joined: 2025-11-03</span>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="product-img"><img src="~/dist/img/default-150x150.png" alt="Customer Image" class="img-size-50"></div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Michael Lee <span class="badge badge-warning float-right">Pending</span></a>
+                      <span class="product-description">michaellee@example.com | Joined: 2025-11-04</span>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="product-img"><img src="~/dist/img/default-150x150.png" alt="Customer Image" class="img-size-50"></div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Emily Tan <span class="badge badge-info float-right">New</span></a>
+                      <span class="product-description">emilytan@example.com | Joined: 2025-11-05</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="Customers" class="uppercase">View All Customers</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+<!-- Wrapper -->
+
+  <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+<!-- Control Sidebar -->
+
+<!-- Control Sidebar -->
+
+<!-- Footer -->
+
+<!-- Footer -->
+<!-- ./wrapper -->
+
+@section Scripts {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('salesChart').getContext('2d');
+
+    var salesChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+                label: 'Sales 2025',
+                data: [
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000,
+                    Math.floor(Math.random() * 10000) + 1000
+                ],
+                backgroundColor: 'rgba(60,141,188,0.2)',
+                borderColor: 'rgba(60,141,188,1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.2,
+                pointBackgroundColor: 'rgba(60,141,188,1)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
+        }
+    });
+});
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const products = ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'];
+    const sales = products.map(() => Math.floor(Math.random() * 100) + 1);
+
+    const totalSales = sales.reduce((a,b) => a+b, 0);
+
+    const backgroundColors = sales.map(value => {
+        if(value > 70) return 'rgba(60,141,188,0.9)';
+        if(value > 40) return 'rgba(60,141,188,0.6)';
+        return 'rgba(60,141,188,0.3)';
+    });
+
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: products,
+            datasets: [{
+                label: 'Sales (Units)',
+                data: sales,
+                backgroundColor: backgroundColors,
+                borderColor: 'rgba(60,141,188,1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const units = context.raw;
+                            const percent = ((units/totalSales)*100).toFixed(1);
+                            return `${units} units (${percent}%)`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // get current page path (relative)
+    const currentPath = window.location.pathname.split("/").pop();
+
+    // select all sidebar links
+    const sidebarLinks = document.querySelectorAll('.nav-sidebar a.nav-link');
+
+    sidebarLinks.forEach(link => {
+      // remove any existing active class
+      link.classList.remove('active');
+
+      // get href of link
+      const linkPath = link.getAttribute('href').split("/").pop();
+
+      // if href matches current page, add active
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+
+        // expand parent treeview if inside a submenu
+        let parent = link.closest('.nav-treeview');
+        while (parent) {
+          const parentLink = parent.previousElementSibling;
+          if (parentLink && parentLink.classList.contains('nav-link')) {
+            parentLink.classList.add('active');
+          }
+          parent = parent.parentElement.closest('.nav-treeview');
+        }
+      }
+    });
+  });
+</script>
+}

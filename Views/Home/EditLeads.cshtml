@@ -1,0 +1,121 @@
+@model AutocountCRM_ProjectOne.Models.leads_list
+
+@{
+    ViewData["Title"] = "Edit leads";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Leads</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title">Edit Leads Information</h3>
+  </div>
+
+<form class="form-horizontal" method="post" asp-controller="Leads" asp-action="EditLeads">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" name="leadsId" />
+    
+    <div class="card-body">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">First Name </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="FirstName" placeholder="First Name">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Last Name </label>
+        <div class="col-sm-4">
+         <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Company </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="Company" placeholder="Company">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Product </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="Product" placeholder="Product">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Product ID </label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" asp-for="ProductId" placeholder="Product ID">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Website </label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" asp-for="Website" placeholder="Website">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Subscriber Email </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="SubscriberEmail" placeholder="subscriber@email.com">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Lead Status </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="LeadStatus" placeholder="Lead Status">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Lead Source </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="LeadSource" placeholder="Source">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Assigned to </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="AssignedTo" placeholder="Assigned to staff :">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">City </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="City" placeholder="City">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Country</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="Country" placeholder="Country">
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Comments</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control"
+              value="@($"{Model.Comments} ({Model.CreatedAt:dd/MM/yyyy HH:mm})")"
+              readonly>
+        </div>
+      </div>
+      
+      <!-- Validation Summary -->
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+      <div>
+        <button type="submit" class="btn btn-info">Save Changes</button>
+        <a class="btn btn-secondary" asp-controller="Leads" asp-action="Leads">Cancel</a>
+        <button type="button" class="btn btn-danger">Delete Item</button>
+      </div>
+    </div>
+  </form>
+</div>
+</section>
