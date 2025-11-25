@@ -2,19 +2,6 @@
     ViewData["Title"] = "Leads";
     Layout = "_Layout";
 }
-  <!-- Wrapper -->
-  
-  <!-- Wrapper -->
-
-  <!-- Navbar -->
-
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-
-  <!-- Main Sidebar Container -->
-
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -30,8 +17,6 @@
         </div>
       </div>  
     </section>
-
-    <!-- Main content -->
 <section class="content">
 @model IEnumerable<AutocountCRM_ProjectOne.Models.leads_list>
 
@@ -94,46 +79,19 @@
 
       </table>
     </div>
-    <!-- /.card-body -->
   </div>
 </section>
-  <!-- /.content-wrapper -->
-  <!-- Control Sidebar -->
-
-  <!-- Footer -->
-
-  <!-- Footer -->
-
-  <!-- Control Sidebar -->
-
-  <!-- Control Sidebar -->
-
-  <!-- /.control-sidebar -->
-
-  <!-- ./wrapper -->
-
-  <!-- ./wrapper -->
 @section Scripts {
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // get current page path (relative)
     const currentPath = window.location.pathname.split("/").pop();
-
-    // select all sidebar links
     const sidebarLinks = document.querySelectorAll('.nav-sidebar a.nav-link');
 
     sidebarLinks.forEach(link => {
-      // remove any existing active class
       link.classList.remove('active');
-
-      // get href of link
       const linkPath = link.getAttribute('href').split("/").pop();
-
-      // if href matches current page, add active
       if (linkPath === currentPath) {
         link.classList.add('active');
-
-        // expand parent treeview if inside a submenu
         let parent = link.closest('.nav-treeview');
         while (parent) {
           const parentLink = parent.previousElementSibling;
@@ -163,7 +121,7 @@
         const result = await response.json();
         if (result.success) {
             alert("Lead deleted!");
-            window.location.reload(); // refresh page
+            window.location.reload();
         } else {
             alert(result.message || 'Error deleting lead');
         }
