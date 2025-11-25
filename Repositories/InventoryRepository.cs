@@ -20,29 +20,8 @@ public class InventoryRepository
             .ToListAsync();
     }
 
-    public async Task<Inventory?> GetByIdAsync(int ItemID)
+    public async Task<Inventory?> GetByIdAsync(long AutoKey)
     {
-        return await _context.Inventory.FindAsync(ItemID);
+        return await _context.Inventory.FindAsync(AutoKey);
     }
-
-    public async Task UpdateAsync(Inventory inv)
-    {
-        _context.Inventory.Update(inv);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task AddAsync(Inventory inv)
-    {
-        _context.Inventory.Add(inv);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(Inventory inv)
-    {
-        _context.Inventory.Remove(inv);
-        await _context.SaveChangesAsync();
-    }
-
-
-    
 }

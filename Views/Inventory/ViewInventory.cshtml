@@ -1,0 +1,159 @@
+@model AutocountCRM_ProjectOne.Models.Inventory
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Inventory</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title">Inventory Information</h3>
+  </div>
+
+<form id="editInventoryForm" class="form-horizontal" method="post"
+      asp-controller="Inventory"
+      asp-action="EditInventory"
+      asp-route-InventoryId="@Model.AutoKey">
+
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="AutoKey" />
+
+    <div class="card-body">
+
+      <!-- Item -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Item Code</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="ItemCode">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Base UOM</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="BaseUOM">
+        </div>
+      </div>
+
+      <!-- Item Group / Type -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Item Group</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="ItemGroup">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Item Type</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="ItemType">
+        </div>
+      </div>
+
+      <!-- Lead Time / Duty -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Lead Time</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="LeadTime">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Duty Rate</label>
+        <div class="col-sm-4">
+          <input type="number" step="0.01" class="form-control" asp-for="DutyRate">
+        </div>
+      </div>
+
+      <!-- Tax -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Tax Code</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="TaxCode">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Purchase Tax Code</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" asp-for="PurchaseTaxCode">
+        </div>
+      </div>
+
+      <!-- Status (char fields handled properly) -->
+
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <div>
+        <a class="btn btn-secondary" asp-controller="Inventory" asp-action="Index">Cancel</a>
+      </div>
+    </div>
+
+</form>
+
+</div>
+</section>
+
+@section Scripts {
+<script>
+document.getElementById('editInventoryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+
+        const result = await response.json(); // always JSON now
+
+        if (result.success) {
+            alert("Changes saved!");
+            window.close(); // or redirect if needed
+        } else if (result.redirect) {
+            // not logged in, redirect
+            window.location.href = result.redirect;
+        } else {
+            alert(result.message || 'Error saving Inventory');
+        }
+
+    } catch (err) {
+        console.error("Fetch error:", err);
+        alert("Unexpected error occurred.");
+    }
+});
+
+
+document.querySelectorAll('.delete-inventory-btn').forEach(btn => {
+    btn.addEventListener('click', async function(e) {
+        e.preventDefault();
+        if (!confirm("Are you sure you want to delete this Inventory?")) return;
+
+        const id = btn.dataset.id;
+        const response = await fetch(`/Inventory/DeleteInventory?ItemID=${AutoKey}`, {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert("inventory deleted!");
+            window.close();
+        } else {
+            alert(result.message || 'Error deleting inventory');
+        }
+    });
+});
+</script>
+}

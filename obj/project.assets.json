@@ -4756,22 +4756,25 @@
   },
   "packageFolders": {
     "C:\\Users\\ayede\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ayede\\AutocountCRM-ProjectOne\\AutocountCRM-ProjectOne.csproj",
+      "projectUniqueName": "c:\\Users\\ayede\\AutocountCRM-ProjectOne\\AutocountCRM-ProjectOne.csproj",
       "projectName": "AutocountCRM-ProjectOne",
-      "projectPath": "C:\\Users\\ayede\\AutocountCRM-ProjectOne\\AutocountCRM-ProjectOne.csproj",
+      "projectPath": "c:\\Users\\ayede\\AutocountCRM-ProjectOne\\AutocountCRM-ProjectOne.csproj",
       "packagesPath": "C:\\Users\\ayede\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ayede\\AutocountCRM-ProjectOne\\obj\\",
+      "outputPath": "c:\\Users\\ayede\\AutocountCRM-ProjectOne\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\ayede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4780,6 +4783,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\DevExpress 22.2\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4798,7 +4802,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -4838,7 +4842,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

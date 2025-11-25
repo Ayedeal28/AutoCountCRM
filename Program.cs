@@ -21,6 +21,8 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddScoped<LeadsRepository>();
 builder.Services.AddScoped<InventoryRepository>();
+builder.Services.AddScoped<CustomerRepository>();
+builder.Services.AddScoped<QuotationRepository>();
 
 var app = builder.Build();
 

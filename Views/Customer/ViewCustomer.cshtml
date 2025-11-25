@@ -1,0 +1,124 @@
+@model AutocountCRM_ProjectOne.Models.Debtor
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Inventory</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title">Inventory Information</h3>
+  </div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">View Customer</h3>
+    </div>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <label>Company Name</label>
+                <p class="form-control-plaintext">@Model.CompanyName</p>
+            </div>
+            <div class="col-sm-6">
+                <label>Description</label>
+                <p class="form-control-plaintext">@Model.Desc2</p>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <label>Account No</label>
+                <p class="form-control-plaintext">@Model.AccNo</p>
+            </div>
+            <div class="col-sm-6">
+                <label>Register No</label>
+                <p class="form-control-plaintext">@Model.RegisterNo</p>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <label>Address</label>
+                <p class="form-control-plaintext">
+                    @Model.Address1<br />
+                    @Model.Address2<br />
+                    @Model.Address3<br />
+                    @Model.Address4<br />
+                    @Model.PostCode
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <label>Delivery Address</label>
+                <p class="form-control-plaintext">
+                    @Model.DeliverAddr1<br />
+                    @Model.DeliverAddr2<br />
+                    @Model.DeliverAddr3<br />
+                    @Model.DeliverAddr4<br />
+                    @Model.DeliverPostCode
+                </p>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <label>Phone</label>
+                <p class="form-control-plaintext">@Model.Phone1 @Model.Phone2</p>
+            </div>
+            <div class="col-sm-4">
+                <label>Fax</label>
+                <p class="form-control-plaintext">@Model.Fax1 @Model.Fax2</p>
+            </div>
+            <div class="col-sm-4">
+                <label>Email</label>
+                <p class="form-control-plaintext">@Model.EmailAddress</p>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <label>Debtor Type</label>
+                <p class="form-control-plaintext">@Model.DebtorType</p>
+            </div>
+            <div class="col-sm-4">
+                <label>Credit Limit</label>
+                <p class="form-control-plaintext">@Model.CreditLimit</p>
+            </div>
+            <div class="col-sm-4">
+                <label>Currency</label>
+                <p class="form-control-plaintext">@Model.CurrencyCode</p>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <label>Web URL</label>
+                <p class="form-control-plaintext">@Model.WebURL</p>
+            </div>
+            <div class="col-sm-6">
+                <label>Note</label>
+                <p class="form-control-plaintext">@Model.Note</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-secondary" asp-controller="Customer" asp-action="Index">Back</a>
+    </div>
+</div>
+
+
+</div>
+</section>
+
+@section Scripts {
+<script>
+</script>
+}

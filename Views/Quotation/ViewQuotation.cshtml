@@ -1,0 +1,123 @@
+@model AutocountCRM_ProjectOne.Models.QT
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Inventory</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title">Quotation Information</h3>
+  </div>
+
+<form id="viewQuotationForm" class="form-horizontal">
+
+    <div class="card-body">
+
+      <!-- Quotation Info -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Quotation No.</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.DocNo" readonly>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Quotation Date</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.DocDate.ToString("yyyy-MM-dd")" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Client Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.DebtorName" readonly>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Contact Person</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.Attention" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.Phone1" readonly>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Sales Agent</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.SalesAgent" readonly>
+        </div>
+      </div>
+
+      <!-- Billing & Delivery Address -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Billing Address</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" rows="2" readonly>@($"{Model.InvAddr1} {Model.InvAddr2} {Model.InvAddr3} {Model.InvAddr4}")</textarea>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Delivery Address</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" rows="2" readonly>@($"{Model.DeliverAddr1} {Model.DeliverAddr2} {Model.DeliverAddr3} {Model.DeliverAddr4}")</textarea>
+        </div>
+      </div>
+
+      <!-- Payment / Terms / Total -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Payment Term</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.DisplayTerm" readonly>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Currency</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.CurrencyCode" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Total Amount</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" value="@Model.FinalTotal" readonly>
+        </div>
+      </div>
+
+      <!-- Optional Notes -->
+      @if(!string.IsNullOrEmpty(Model.Note))
+      {
+          <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Note</label>
+              <div class="col-sm-10">
+                  <textarea class="form-control" rows="3" readonly>@Model.Note</textarea>
+              </div>
+          </div>
+      }
+
+    </div>
+
+    <div class="card-footer">
+      <a class="btn btn-secondary" asp-controller="Quotation" asp-action="Index">Back to List</a>
+    </div>
+
+</form>
+
+
+</div>
+</section>
+
+@section Scripts {
+<script>
+
+</script>
+}

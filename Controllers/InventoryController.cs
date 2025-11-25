@@ -25,98 +25,18 @@ public class InventoryController : Controller
         return View("Inventory", InventoryList);
     }
 
-    public IActionResult AddInventory()
-    {
-        if (!IsLoggedIn()) return RedirectToAction("LogIn", "Home");
-         return View(new Inventory());
-    }
-
-    // POST: save new Inventory
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddInventory(Inventory inv)
-    {
-        if (!IsLoggedIn()) return Json(new { success = false, redirect = Url.Action("LogIn", "Home") });
-
-        if (!ModelState.IsValid)
-            return Json(new { success = false, message = "Invalid input" });
-
-        try
-        {
-            await _repo.AddAsync(inv);
-            return Json(new { success = true });
-        }
-        catch (Exception ex)
-        {
-            return Json(new { success = false, message = ex.Message });
-        }
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> DeleteInventory(int ItemID)
-    {
-        if (!IsLoggedIn()) return Json(new { success = false, redirect = Url.Action("LogIn", "Home") });
-
-        try
-        {
-            var inv = await _repo.GetByIdAsync(ItemID);
-            if (inv == null)
-                return Json(new { success = false, message = "Inventory not found" });
-
-            await _repo.DeleteAsync(inv);
-            return Json(new { success = true });
-        }
-        catch (Exception ex)
-        {
-            return Json(new { success = false, message = ex.Message });
-        }
-    }
-
-
-    // GET: /Inventory/EditInventory?InventoryId=5
+    // GET: /Inventory/ViewInventory?InventoryId=5
     [HttpGet]
-    public async Task<IActionResult> EditInventory(int InventoryId)
-    {
-        if (!IsLoggedIn()) return RedirectToAction("LogIn", "Home");
-        
-        var InventoryEdit = await _repo.GetByIdAsync(InventoryId);
-        if (InventoryEdit == null) return NotFound();
-        
-        return View(InventoryEdit);
-    }
-
-    // POST: /Inventory/EditInventory
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditInventory(int InventoryId, Inventory inv)
+    public async Task<IActionResult> ViewInventory(long InventoryId)
     {
         if (!IsLoggedIn()) return RedirectToAction("LogIn", "Home");
 
-        // TEMPORARY DEBUG - Remove after fixing
-        Console.WriteLine($"InventoryId parameter: {InventoryId}");
-        Console.WriteLine($"inv.Id: {inv.ItemID}");
+        var inventory = await _repo.GetByIdAsync(InventoryId);
+        if (inventory == null) 
+            return NotFound();
 
-        if (InventoryId != inv.ItemID) 
-        {
-            ModelState.AddModelError("", $"ID mismatch: Inventory Id={InventoryId}, inv.ItemID={inv.ItemID}");
-            return View(inv);
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return View(inv);
-        }
-
-        try
-        {
-            await _repo.UpdateAsync(inv);
-
-            return Json(new { success = true });
-        }
-        catch (Exception ex)
-        {
-            return Json(new { success = false, message = ex.Message });
-        }
+        return View(inventory);
     }
+
 
 }

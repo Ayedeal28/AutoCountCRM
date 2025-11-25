@@ -29,7 +29,7 @@ public class HomeController : Controller
     {
         var user = await _context.UsersLogin.FirstOrDefaultAsync(u => u.Email == email);
 
-
+        // hacker may still able to brute force but rugi lah, takes time to decrypt. buang masa.
         if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
         {
             HttpContext.Session.SetString("UserID", user.Id.ToString());
@@ -48,13 +48,13 @@ public class HomeController : Controller
         return RedirectToAction("LogIn");
     }
 
-    // ===== ORIGINAL METHODS (protected by login) =====
+
     public async Task<IActionResult> Index()
     {
         if (!IsLoggedIn()) return RedirectToAction("LogIn");
-        var QuotationCount = await _context.quotation_list.CountAsync();
-        var leadCount = await _context.leads_list.CountAsync();
-        ViewBag.LeadCount = leadCount;
+        var QuotationCount = await _context.QT.CountAsync();
+        var DebtorCount = await _context.Debtor.CountAsync();
+        ViewBag.debtorCount = DebtorCount;
         ViewBag.quotationCount = QuotationCount;
 
         return View();
@@ -86,12 +86,12 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Quotation()
-    {
-        if (!IsLoggedIn()) return RedirectToAction("LogIn");
-        var quotations = _context.quotation_list.ToList();
-        return View(quotations);
-    }
+    // public IActionResult Quotation()
+    // {
+    //     if (!IsLoggedIn()) return RedirectToAction("LogIn");
+    //     var quotations = _context.quotation_list.ToList();
+    //     return View(quotations);
+    // }
 
     public async Task<IActionResult> manageuser() 
     {
